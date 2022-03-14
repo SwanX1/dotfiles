@@ -1,0 +1,13 @@
+[commit]
+  gpgsign = true
+
+[tag]
+  forceSignAnnotated = true
+
+[alias]
+  poop = !bash ~/scripts/git_poop # See scripts/git_poop
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit
+  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+
+[init]
+  defaultBranch = main

@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if [[ $# -eq 0 ]] || [[ $1 == "--help" ]] || [[ $1 == "-h" ]] || [[ $1 == "-help" ]]; then
+  echo "Usage: $0 [FILES]"
+  echo "Description: Converts files to PNG format"
+  exit
+fi
+
+while (( "$#" )); do
+  if [[ ! -s $1 ]]; then
+    echo "File $1 doesn't exist or is empty."
+    shift
+    continue
+  fi
+
+  filename=$(basename -- "$1")
+  dirname=$(dirname -- "$1")
+  extension="png"
+
+  ffmpeg -i "$1" "$dirname/$filename.$extension" 2> /dev/null
+
+  shift
+done

@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if [[ $# -eq 0 ]] || [[ $1 == "--help" ]] || [[ $1 == "-h" ]] || [[ $1 == "-help" ]]; then
+  echo "Usage: $0 [FILES]"
+  echo "Description: Renames given files to their MD5 hashes. Keeps extensions."
+  exit
+fi
+
+while (( "$#" )); do
+  if [[ ! -s $1 ]]; then
+    echo "File $1 doesn't exist or is empty."
+    shift
+    continue
+  fi
+
+  filename=$(basename -- "$1")
+  dirname=$(dirname -- "$1")
+  extension="${filename##*.}"
+  md5=$(md5sum -- "$1" | cut -b 1-32)
+
+  mv "$1" "$dirname/$md5.$extension" 2> /dev/null
+
+  shift
+done

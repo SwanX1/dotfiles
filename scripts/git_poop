@@ -1,0 +1,5 @@
+#!/bin/bash
+
+ffplay -autoexit -nodisp ~/scripts/assets/fart.mp3 -af "volume=10" &> /dev/null &
+echo "Pooping to remote..."
+git push `echo "$@"`
