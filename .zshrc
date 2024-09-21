@@ -8,6 +8,7 @@ _CLI_ZSH_AUTOCOMPLETE_HACK=1
 source /etc/zsh/zsh_autocomplete_croc
 
 alias ytdl=youtube-dl
+alias clipboard="xclip -sel clip"
 
 function gitpush() { echo "git poop"; git poop; zle reset-prompt; zle redisplay }
 zle -N gitpush
